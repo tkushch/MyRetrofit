@@ -22,25 +22,25 @@ public class MainActivity extends AppCompatActivity {
 
 //        1
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://finhub.io/")
+                .baseUrl("https://finnhub.io/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 //        2
         FinhubService service = retrofit.create(FinhubService.class);
 //        3
-        Call<List<Symbol>> symbolsListCall = service.listSymbols();
+        Call<List<Symbol>> symbolsListCall = service.listSymbols(getString(R.string.token), "US");
 
 //        4   (используем полученный с помощью Retrofit-а "Call", но в другом потоке)
         symbolsListCall.enqueue(new Callback<List<Symbol>>() {
             @Override
             public void onResponse(Call<List<Symbol>> call, Response<List<Symbol>> response) {
-                List<Symbol> symbols = response.body();
-                ((TextView)findViewById(R.id.textView1)).setText(symbols.toString());
+                    List<Symbol> symbols = response.body();
+                    ((TextView) findViewById(R.id.textView1)).setText(symbols.toString());
             }
 
             @Override
             public void onFailure(Call<List<Symbol>> call, Throwable t) {
-                ((TextView)findViewById(R.id.textView1)).setText("Туши свет");
+                ((TextView)findViewById(R.id.textView1)).setText(t.getLocalizedMessage());
             }
         });
     }
