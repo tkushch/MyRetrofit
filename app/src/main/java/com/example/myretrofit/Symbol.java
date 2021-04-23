@@ -26,6 +26,8 @@ public class Symbol {
         @Expose
         public String type;
 
+        public float price=-1f;
+
         @Override
         public String toString() {
                 return "Symbol{" +
