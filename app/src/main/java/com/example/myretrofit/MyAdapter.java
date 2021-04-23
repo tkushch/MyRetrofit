@@ -15,13 +15,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-       public final TextView tv1, tv2, tv3;
+       public final TextView tv1, tv2, tv3, tv4;
 
         public ViewHolder(View view) {
             super(view);
             tv1 = view.findViewById(R.id.textView);
             tv2 = view.findViewById(R.id.textView2);
             tv3 = view.findViewById(R.id.textView3);
+            tv4 = view.findViewById(R.id.textView5);
         }
 
     }
@@ -48,6 +49,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         viewHolder.tv1.setText(localDataSet.get(position).type);
         viewHolder.tv2.setText(localDataSet.get(position).figi);
         viewHolder.tv3.setText(String.valueOf(localDataSet.get(position).price));
+        viewHolder.tv4.setText(Integer.toString(position));
 
     }
     @Override
